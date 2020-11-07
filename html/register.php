@@ -33,6 +33,16 @@ $resource_sets = $response->resourceSets;
 $resources = $resource_sets[0]->resources;
 $results = $resources[0]->results;
 
+$adj = array(array());
+
 foreach ($results as $result) {
-    echo $result->originIndex . " " . $result->destinationIndex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
+    $originIndex = $result->originIndex;
+    $destinationIndex = $result->destinationIndex;
+    $travelDistance = $result->traveDistance;
+    $travelDuration = $result->travelDuration;
+
+    $adj[$originIndex][$destinationIndex] = $travelDuration;
+//    echo $result->originIndex . " " . $result->destinationIndex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
 }
+
+print_r($adj);
