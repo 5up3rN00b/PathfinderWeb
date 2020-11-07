@@ -53,7 +53,7 @@ $ans = 1e15;
 $visited = array();
 $total = 3;
 $start = 0;
-$end = 0;
+$end = 1;
 
 for ($i = 0; $i < $total; $i++) {
     $visited[$i] = false;
