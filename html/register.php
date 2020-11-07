@@ -7,12 +7,16 @@ $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key=" . $api_
 $data = array(
     'origins' => array(
         array(
-            'latitude' => 37,
-            'longitude' => -122
+            'latitude' => 37.5645,
+            'longitude' => -122.0164
         ),
         array(
-            'latitude' => 32,
-            'longitude' => -117
+            'latitude' => 37.4509,
+            'longitude' => -121.9005
+        ),
+        array(
+            'latitude' => 37.3859,
+            'longitude' => -122.1094
         )
     ),
     'travelMode' => 'driving'
@@ -47,7 +51,7 @@ foreach ($results as $result) {
 
 $ans = 1e15;
 $visited = array();
-$total = 2;
+$total = 3;
 $start = 0;
 $end = 0;
 
@@ -64,11 +68,8 @@ echo $ans;
 function tsp($curr, $count, $cost) {
     global $adj, $ans, $visited, $total, $end;
 
-    echo $cost . " ". $count . "<br>";
-
     if ($count == $total - 1) {
         $ans = min($ans, $cost + $adj[$curr][$end]);
-        echo $ans . "<br>";
     }
 
     for ($i = 0; $i < $total; $i++) {
