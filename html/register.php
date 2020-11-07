@@ -1,7 +1,9 @@
 <?php
 //require '../templates/helper.php';
 
-$url = "";
+$api_key = getKeys()[1];
+
+$url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key=" . $api_key;
 $data = array(
     'origins' => array(
         array(
@@ -16,4 +18,15 @@ $data = array(
     'travelMode' => 'driving'
 );
 
-echo json_encode($data);
+$options = array(
+    'http' => array(
+        'method'  => 'POST',
+        'content' => json_encode($data),
+        'header' =>  "Content-Type: application/json\r\n"
+    )
+);
+
+$context = stream_context_create($options);
+$result = file_get_contents($url, false, $context);
+
+print_r(json_decode($result));

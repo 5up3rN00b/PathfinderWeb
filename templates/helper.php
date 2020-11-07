@@ -1,11 +1,15 @@
 <?php
+
+function getKeys() {
+    $handle = fopen($_SERVER['DOCUMENT_ROOT'] . '/../private/keys.csv', 'r');
+    return fgetcsv($handle, 5, ',');
+}
+
 function setupDb() {
     $dsn = 'mysql:host=localhost;dbname=pathfinder';
     $user = 'aaron';
 
-    $handle = fopen($_SERVER['DOCUMENT_ROOT'] . '/../private/keys.csv', 'r');
-    $data = fgetcsv($handle, 5, ',');
-    $password = $data[0];
+    $password = getKeys()[0];
 
     try {
         $db = new PDO($dsn, $user, $password);
