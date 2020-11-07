@@ -1,4 +1,5 @@
 <?php
+
 $json = file_get_contents('php://input');
 $post = json_decode($json);
 
@@ -16,6 +17,24 @@ foreach ($coordinates as $coordinate) {
 
 print_r($origins);
 
+$origins_copy = array(
+    array(
+        'latitude' => 37.5645,
+        'longitude' => -122.0164
+    ),
+    array(
+        'latitude' => 37.4509,
+        'longitude' => -121.9005
+    ),
+    array(
+        'latitude' => 37.3859,
+        'longitude' => -122.1094
+    )
+);
+
+print_r($origins_copy);
+die();
+
 $api_key = getKeys()[1];
 
 $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key=" . $api_key;
@@ -26,9 +45,9 @@ $data = array(
 
 $options = array(
     'http' => array(
-        'method'  => 'POST',
+        'method' => 'POST',
         'content' => json_encode($data),
-        'header' =>  "Content-Type: application/json\r\n"
+        'header' => "Content-Type: application/json\r\n"
     )
 );
 
@@ -67,7 +86,8 @@ tsp($start, 0, 0);
 
 echo $ans;
 
-function tsp($curr, $count, $cost) {
+function tsp($curr, $count, $cost)
+{
     global $adj, $ans, $visited, $total, $end;
 
     if ($count == $total - 1) {
