@@ -64,6 +64,7 @@ function tsp($curr, $count, $cost) {
 
     if ($count == $total) {
         $ans = min($ans, $cost + $adj[$curr][$end]);
+        echo $ans . "<br>";
     }
 
     for ($i = 0; $i < $total; $i++) {
