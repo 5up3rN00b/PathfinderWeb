@@ -1,5 +1,5 @@
 <?php
-//require '../templates/helper.php';
+require '../templates/helper.php';
 
 $api_key = getKeys()[1];
 
