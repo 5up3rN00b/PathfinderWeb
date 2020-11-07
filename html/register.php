@@ -32,4 +32,6 @@ $result = json_decode(file_get_contents($url, false, $context));
 //var_dump($result);
 //print_r($result->{'results'});
 //print_r($result['results']);
-print_r($result->resourceSets);
+$resource_sets = $result->resourceSets;
+$resources = $resource_sets[0]->resources;
+print_r($resources['results']);
