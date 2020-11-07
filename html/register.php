@@ -27,6 +27,6 @@ $options = array(
 );
 
 $context = stream_context_create($options);
-$result = file_get_contents($url, false, $context);
+$result = json_decode(file_get_contents($url, false, $context));
 
-print_r(json_decode($result));
+print_r($result->{'results'});
