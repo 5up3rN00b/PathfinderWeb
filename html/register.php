@@ -45,15 +45,19 @@ foreach ($results as $result) {
 //    echo $result->originIndex . " " . $result->destinationIndex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
 }
 
-$ans = 10000000000000000000;
+$ans = 1e15;
 $visited = array();
-$total = 2;
+$total = 3;
+$start = 0;
 $end = 0;
 
-for ($i = 0; $i < $total; $i++) $visited[$i] = false;
-$visited[0] = true;
+for ($i = 0; $i < $total; $i++) {
+    $visited[$i] = false;
+    $adj[$i][$i] = 0;
+}
+$visited[$start] = true;
 
-tsp(0, 0, 0);
+tsp($start, 0, 0);
 
 echo $ans;
 
@@ -62,7 +66,7 @@ function tsp($curr, $count, $cost) {
 
     echo $cost . "<br>";
 
-    if ($count == $total - 1) {
+    if ($count == $total) {
         $ans = min($ans, $cost + $adj[$curr][$end]);
         echo $ans . "<br>";
     }
