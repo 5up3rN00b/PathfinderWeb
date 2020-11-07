@@ -60,6 +60,8 @@ echo $ans;
 function tsp($curr, $count, $cost) {
     global $adj, $ans, $visited, $total, $end;
 
+    echo $cost . "<br>";
+
     if ($count == $total) {
         $ans = min($ans, $cost + $adj[$curr][$end]);
     }
