@@ -34,5 +34,5 @@ $resources = $resource_sets[0]->resources;
 $results = $resources[0]->results;
 
 foreach ($results as $result) {
-    echo $result->originIndex . " " . $result->destinationindex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
+    echo $result->originIndex . " " . $result->destinationIndex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
 }
