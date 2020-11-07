@@ -31,3 +31,5 @@ $result = json_decode(file_get_contents($url, false, $context));
 
 print_r($result);
 print_r($result->{'results'});
+print_r($result['results']);
+print_r($result->results);
