@@ -27,12 +27,12 @@ $options = array(
 );
 
 $context = stream_context_create($options);
-$result = json_decode(file_get_contents($url, false, $context));
+$response = json_decode(file_get_contents($url, false, $context));
 
-//var_dump($result);
-//print_r($result->{'results'});
-//print_r($result['results']);
-$resource_sets = $result->resourceSets;
+$resource_sets = $response->resourceSets;
 $resources = $resource_sets[0]->resources;
-//print_r($resources);
-print_r($resources[0]->results);
+$results = $resources[0]->results;
+
+foreach ($results as $result) {
+    echo $result->originIndex . " " . $result->destinationindex . " " . $result->travelDistance . " " . $result->travelDuration . "<br>";
+}
