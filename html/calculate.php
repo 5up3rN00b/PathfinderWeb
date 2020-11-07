@@ -15,26 +15,12 @@ foreach ($coordinates as $coordinate) {
 }
 
 print_r($origins);
-die();
 
 $api_key = getKeys()[1];
 
 $url = "https://dev.virtualearth.net/REST/v1/Routes/DistanceMatrix?key=" . $api_key;
 $data = array(
-    'origins' => array(
-        array(
-            'latitude' => 37.5645,
-            'longitude' => -122.0164
-        ),
-        array(
-            'latitude' => 37.4509,
-            'longitude' => -121.9005
-        ),
-        array(
-            'latitude' => 37.3859,
-            'longitude' => -122.1094
-        )
-    ),
+    'origins' => $origins,
     'travelMode' => 'driving'
 );
 
@@ -67,7 +53,7 @@ foreach ($results as $result) {
 
 $ans = 1e15;
 $visited = array();
-$total = 3;
+$total = sizeof($origins);
 $start = 0;
 $end = 1;
 
