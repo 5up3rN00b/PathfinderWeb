@@ -47,7 +47,7 @@ foreach ($results as $result) {
 
 $ans = 1e15;
 $visited = array();
-$total = 3;
+$total = 2;
 $start = 0;
 $end = 0;
 
