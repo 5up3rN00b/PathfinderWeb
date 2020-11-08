@@ -96,4 +96,4 @@ function tsp($curr, $count, $cost) {
 }
 
 print_r($parent_ans);
-//print_r($adj);
+print_r($adj);
