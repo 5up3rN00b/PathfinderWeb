@@ -10,13 +10,13 @@ $coordinates = $post->coordinates;
 
 $origins = array();
 
-array_push($origins, array('latitude' => $start->latitude, 'longitude' => $start->longitude));
-array_push($origins, array('latitude' => $end->latitude, 'longitude' => $end->longitude));
+//array_push($origins, array('latitude' => $start->latitude, 'longitude' => $start->longitude));
+//array_push($origins, array('latitude' => $end->latitude, 'longitude' => $end->longitude));
 foreach ($coordinates as $coordinate) {
     array_push($origins, array('latitude' => $coordinate->latitude, 'longitude' => $coordinate->longitude));
 }
 
-print_r($origins);
+//print_r($origins);
 
 $api_key = getKeys()[1];
 
@@ -60,7 +60,7 @@ $parent_ans = array();
 $last_index = 0;
 $total = sizeof($origins);
 $start = 0;
-$end = 1;
+$end = $total - 1;
 
 for ($i = 0; $i < $total; $i++) {
     $visited[$i] = false;
@@ -71,7 +71,7 @@ $visited[$end] = true;
 
 tsp($start, 0, 0);
 
-echo $ans;
+//echo $ans;
 
 function tsp($curr, $count, $cost) {
     global $adj, $ans, $visited, $parent, $parent_ans, $total, $end;
@@ -96,4 +96,4 @@ function tsp($curr, $count, $cost) {
 }
 
 print_r($parent_ans);
-print_r($adj);
+//print_r($adj);
