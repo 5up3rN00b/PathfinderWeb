@@ -55,12 +55,11 @@ foreach ($results as $result) {
 
 $ans = 1e15;
 $visited = array();
+$parent = array();
+$parent_ans = array();
 $total = sizeof($origins);
 $start = 0;
 $end = 1;
-
-print_r($adj);
-echo $total . "<br>";
 
 for ($i = 0; $i < $total; $i++) {
     $visited[$i] = false;
@@ -72,21 +71,25 @@ tsp($start, 0, 0);
 
 echo $ans;
 
-function tsp($curr, $count, $cost)
-{
-    global $adj, $ans, $visited, $total, $end;
+function tsp($curr, $count, $cost) {
+    global $adj, $ans, $visited, $parent, $parent_ans, $total, $end;
 
     if ($count == $total - 1) {
-        $ans = min($ans, $cost + $adj[$curr][$end]);
+        if ($cost + $adj[$curr][$end] < $ans) {
+            $parent_ans = $parent;
+            $ans = $cost + $adj[$curr][$end];
+        }
     }
 
     for ($i = 0; $i < $total; $i++) {
         if (!$visited[$i]) {
             $visited[$i] = true;
+            $parent[$i] = $curr;
             tsp($i, $count + 1, $cost + $adj[$curr][$i]);
+            $parent[$i] = $i;
             $visited[$i] = false;
         }
     }
 }
 
-print_r($adj);
+print_r($parent_ans);
