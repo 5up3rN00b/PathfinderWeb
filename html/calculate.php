@@ -71,6 +71,7 @@ $visited[$end] = true;
 
 tsp($start, 0, 0);
 
+echo $total . "|";
 echo $ans . "|";
 
 function tsp($curr, $count, $cost) {
