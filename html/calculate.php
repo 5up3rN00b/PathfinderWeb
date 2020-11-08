@@ -57,6 +57,7 @@ $ans = 1e15;
 $visited = array();
 $parent = array();
 $parent_ans = array();
+$last_index = 0;
 $total = sizeof($origins);
 $start = 0;
 $end = 1;
@@ -82,6 +83,8 @@ function tsp($curr, $count, $cost) {
     }
 
     for ($i = 0; $i < $total; $i++) {
+        if ($i == $end) continue;
+
         if (!$visited[$i]) {
             $visited[$i] = true;
             $parent[$i] = $curr;
