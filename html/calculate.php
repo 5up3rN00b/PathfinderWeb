@@ -71,7 +71,7 @@ $visited[$end] = true;
 
 tsp($start, 0, 0);
 
-//echo $ans;
+echo $ans . "|";
 
 function tsp($curr, $count, $cost) {
     global $adj, $ans, $visited, $parent, $parent_ans, $total, $end;
@@ -95,5 +95,19 @@ function tsp($curr, $count, $cost) {
     }
 }
 
-print_r($parent_ans);
-print_r($adj);
+$order = array();
+
+$index = $end;
+while ($index != $start) {
+    echo $adj[$parent_ans[$index]][$index] . "|";
+    array_unshift($order, $index);
+    $index = $parent_ans[$index];
+}
+array_unshift($order, $start);
+
+foreach ($order as $i) {
+    echo $i;
+}
+
+//print_r($parent_ans);
+//print_r($adj);
