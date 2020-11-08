@@ -75,7 +75,7 @@ echo $ans;
 function tsp($curr, $count, $cost) {
     global $adj, $ans, $visited, $parent, $parent_ans, $total, $end;
 
-    if ($count == $total - 1) {
+    if ($count == $total - 2) {
         if ($cost + $adj[$curr][$end] < $ans) {
             $parent_ans = $parent;
             $ans = $cost + $adj[$curr][$end];
