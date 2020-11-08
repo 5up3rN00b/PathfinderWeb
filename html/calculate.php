@@ -77,6 +77,7 @@ function tsp($curr, $count, $cost) {
 
     if ($count == $total - 2) {
         if ($cost + $adj[$curr][$end] < $ans) {
+            $parent[$end] = $curr;
             $parent_ans = $parent;
             $ans = $cost + $adj[$curr][$end];
         }
