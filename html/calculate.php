@@ -67,6 +67,7 @@ for ($i = 0; $i < $total; $i++) {
     $adj[$i][$i] = 0;
 }
 $visited[$start] = true;
+$visited[$end] = true;
 
 tsp($start, 0, 0);
 
@@ -84,8 +85,6 @@ function tsp($curr, $count, $cost) {
     }
 
     for ($i = 0; $i < $total; $i++) {
-        if ($i == $end) continue;
-
         if (!$visited[$i]) {
             $visited[$i] = true;
             $parent[$i] = $curr;
